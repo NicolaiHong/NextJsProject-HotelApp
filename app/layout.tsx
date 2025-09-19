@@ -1,10 +1,11 @@
-//import { Main } from "next/document";
+import "@/assets/styles/globals.css";
 
-const MainLayout = () => {
+//destructuring children from props
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <main>Main layout </main>
+        <main>{children}</main>
       </body>
     </html>
   );
