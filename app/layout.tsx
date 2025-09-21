@@ -1,5 +1,13 @@
-import "@/assets/styles/globals.css";
+import "@/assets/style/globals.css";
+import { title } from "process";
 
+export const metdata = {
+  title: "My Next.js App",
+  keywords: ["Next.js", "React", "TypeScript"],
+  description: "A simple Next.js application",
+};
+
+//if you add favicon in app directory it will automatically be used in Next.js
 //destructuring children from props
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
