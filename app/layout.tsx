@@ -1,5 +1,5 @@
 import "@/assets/style/globals.css";
-import { title } from "process";
+import Navbar from "@/components/Navbar";
 
 export const metdata = {
   title: "My Next.js App",
@@ -13,6 +13,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
+        <Navbar />
         <main>{children}</main>
       </body>
     </html>
