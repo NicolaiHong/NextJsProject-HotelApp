@@ -1,6 +1,6 @@
 import "@/assets/style/globals.css";
 import Navbar from "@/components/Navbar";
-
+import Footer from "@/components/Footer";
 export const metdata = {
   title: "My Next.js App",
   keywords: ["Next.js", "React", "TypeScript"],
@@ -15,6 +15,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
