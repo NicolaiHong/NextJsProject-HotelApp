@@ -29,6 +29,22 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Properties page bug (October 2025)
+
+**Issue**
+
+- Trong `app/properties/page.tsx` bạn dùng `properties.map((properties) => ...)`. Biến vòng lặp trùng tên với mảng gốc nên nó “che” biến phía ngoài. Khi React cố đọc `properties.length` hay truyền prop vào `PropertyCard`, TypeScript không còn phân biệt được đâu là mảng đâu là từng object, dễ dẫn tới lỗi kiểu.
+- Ngoài ra class Tailwind `lg:conatiner` bị đánh sai chính tả nên layout không nhận breakpoint.
+- Kiểu dữ liệu `square_feet` trong `PropertyCard` khai báo là `string` trong khi JSON thực tế là số, gây cảnh báo “number không gán được cho string”.
+
+**Fix**
+
+- Đổi tên biến vòng lặp thành `property` để tránh shadowing và giúp TypeScript hiểu đúng kiểu.
+- Sửa `lg:conatiner` thành `lg:container`.
+- Đồng bộ kiểu `square_feet` thành `number` và format bằng `toLocaleString()`.
+
+Những thay đổi này giữ code dễ đọc, đúng kiểu và tránh bug runtime lẫn lint.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
