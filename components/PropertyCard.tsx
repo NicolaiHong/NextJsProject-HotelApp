@@ -26,13 +26,14 @@ interface PropertyCardProps {
 }
 const PropertyCard = ({ property }: PropertyCardProps) => {
   const primaryImage = property.images?.[0];
+  //display rate based on available rates in each property
   const getRateDisplay = () => {
     const { rates = {} } = property;
     if (rates.monthly) {
       return `$${rates.monthly.toLocaleString()}/mo`;
     } else if (rates.weekly) {
       return `$${rates.weekly.toLocaleString()}/wk`;
-    } else {
+    } else if (rates.nightly) {
       return `$${rates.nightly.toLocaleString()}/night`;
     }
   };
