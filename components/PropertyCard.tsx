@@ -10,7 +10,7 @@ import {
 interface PropertyCardProps {
   property: {
     _id: string;
-    images: string[];
+    images?: string[];
     type: string;
     name: string;
     beds: number;
