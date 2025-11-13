@@ -1,5 +1,4 @@
 import { Schema, model, models, Types, Document } from "mongoose";
-import { unique } from "next/dist/build/utils";
 
 export interface IUser extends Document {
   email: string;
