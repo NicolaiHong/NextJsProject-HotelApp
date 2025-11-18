@@ -2,7 +2,7 @@ import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
 import { ConnectToDatabase } from "@/config/database";
 import Property from "@/models/Property";
-import type { IProperty } from "@/models/Property";
+
 const HomeProperties = async () => {
   await ConnectToDatabase();
   const recentProperties = await Property.find({})
