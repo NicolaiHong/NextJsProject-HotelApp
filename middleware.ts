@@ -20,5 +20,5 @@ export function middleware(request: NextRequest) {
 
 //prevent access to certain routes if not authenticated
 export const config = {
-  matcher: protectedRoutes,
+  matcher: ["/properties/add", "/profile", "/properties/saved", "/messages"],
 };
