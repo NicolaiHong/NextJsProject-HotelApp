@@ -175,8 +175,8 @@ const Navbar = () => {
                       className="h-8 w-8 rounded-full"
                       src={profileImage}
                       alt="User profile"
-                      width={32}
-                      height={32}
+                      width={42}
+                      height={42}
                     />
                   </button>
                 </div>
@@ -214,6 +214,10 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex={-1}
                       id="user-menu-item-2"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        signOut();
+                      }}
                     >
                       Sign Out
                     </button>
