@@ -1,6 +1,11 @@
+"use client";
+import addProperty from "@/app/actions/addProperty";
+import { useRef } from "react";
+
 const AddPropertyForm = () => {
+  const fileNameRef = useRef<HTMLSpanElement | null>(null);
   return (
-    <form>
+    <form action={addProperty}>
       <h2 className="text-3xl text-center font-semibold mb-6">Add Property</h2>
 
       <div className="mb-4">
@@ -94,6 +99,7 @@ const AddPropertyForm = () => {
             type="number"
             id="beds"
             name="beds"
+            min={1}
             className="border rounded w-full py-2 px-3"
             required
           />
@@ -105,6 +111,7 @@ const AddPropertyForm = () => {
           <input
             type="number"
             id="baths"
+            min={0}
             name="baths"
             className="border rounded w-full py-2 px-3"
             required
@@ -120,6 +127,7 @@ const AddPropertyForm = () => {
           <input
             type="number"
             id="square_feet"
+            min={20}
             name="square_feet"
             className="border rounded w-full py-2 px-3"
             required
@@ -381,22 +389,43 @@ const AddPropertyForm = () => {
           placeholder="Phone"
         />
       </div>
-
       <div className="mb-4">
-        <label htmlFor="images" className="block text-gray-700 font-bold mb-2">
+        <label className="block text-gray-700 font-bold mb-2">
           Images (Select up to 4 images)
         </label>
+
+        <div className="flex items-center gap-3 border rounded-lg bg-white px-3 py-2">
+          <label
+            htmlFor="images"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600 transition"
+          >
+            Choose Files
+          </label>
+
+          <span ref={fileNameRef} className="text-gray-500 text-sm">
+            No files selected
+          </span>
+        </div>
+
         <input
-          type="file"
           id="images"
-          name="images"
-          className="border rounded w-full py-2 px-3"
-          accept="image/*"
+          type="file"
           multiple
-          required
+          accept="image/*"
+          className="hidden"
+          onChange={(e) => {
+            const files = e.target.files;
+            if (!files || files.length === 0) {
+              if (fileNameRef.current)
+                fileNameRef.current.textContent = "No files selected";
+              return;
+            }
+
+            const names = [...files].map((f) => f.name).join(", ");
+            if (fileNameRef.current) fileNameRef.current.textContent = names;
+          }}
         />
       </div>
-
       <div>
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
