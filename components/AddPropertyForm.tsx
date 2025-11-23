@@ -410,6 +410,7 @@ const AddPropertyForm = () => {
         <input
           id="images"
           type="file"
+          name="images"
           multiple
           accept="image/*"
           className="hidden"
