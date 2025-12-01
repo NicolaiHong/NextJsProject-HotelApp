@@ -3,6 +3,7 @@ import Property from "@/models/Property";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import PropertyDetail from "@/components/PropertyDetails";
 import Link from "next/link";
+import PropertyImages from "@/components/PropertyImages";
 import { FaArrowLeft } from "react-icons/fa";
 const PropertyPage = async ({
   params,
@@ -31,6 +32,7 @@ const PropertyPage = async ({
           </div>
         </div>
       </section>
+      <PropertyImages images={property.images} />
     </>
   );
 };

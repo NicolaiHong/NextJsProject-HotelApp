@@ -41,7 +41,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
     <div className="rounded-xl shadow-md relative">
       {primaryImage ? (
         <Image
-          src={`/images/properties/${primaryImage}`}
+          src={primaryImage}
           alt={`${property.name} - exterior`}
           width={800}
           height={533}
